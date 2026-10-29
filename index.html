@@ -66,6 +66,8 @@
     margin: 10px 0 14px;
   }
   .lede { color: var(--muted); font-size: 17px; max-width: 46ch; }
+  .scripture { font: 500 17px/1.5 var(--font-display); margin-top: 18px; max-width: 46ch; }
+  .cite { font-size: 13px; color: var(--muted); margin-top: 6px; letter-spacing: .04em; }
 
   /* Buttons */
   .btn {
@@ -79,7 +81,7 @@
   .fine { font-size: 14px; color: var(--muted); }
 
   /* Intro legend */
-  .legend { list-style: none; padding: 0; margin: 26px 0 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .legend { list-style: none; padding: 0; margin: 24px 0 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .tile {
     background: var(--surface);
     background: color-mix(in srgb, var(--c) 14%, var(--surface));
@@ -118,15 +120,22 @@
   }
   .hero .badge { background: rgba(255,255,255,.92); border-radius: 50%; width: 96px; height: 96px; display: grid; place-items: center; margin-bottom: 8px; }
   .hero .eyebrow { color: inherit; opacity: .85; }
-  .hero h2 { font-weight: 800; font-size: clamp(42px, 13vw, 60px); line-height: 1; letter-spacing: -.02em; outline: none; }
-  .hero .sub { font: 600 18px/1.3 var(--font-display); }
+  .hero h2 { font-weight: 800; font-size: clamp(36px, 11vw, 56px); line-height: 1; letter-spacing: -.02em; outline: none; }
+  .hero .greek { font-size: 18px; opacity: .92; }
+  .hero .sub { font: 600 18px/1.3 var(--font-display); margin-top: 4px; }
   .hero .blurb { margin-top: 8px; max-width: 46ch; }
   .stack { display: grid; gap: 14px; margin-top: 14px; }
   .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
   .card h3 { font-weight: 700; font-size: 20px; margin-bottom: 8px; }
+  .card p + p { margin-top: 10px; }
   .card ul.tips { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
-  .verse { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; margin-bottom: 6px; }
-  .verse b { font-family: var(--font-display); }
+  .gk { font-size: 18px; }
+  .gk i { color: var(--muted); font-size: 15px; }
+  .vref { font-family: var(--font-display); font-size: 16px; }
+  .tr { font: 600 11px/1 var(--font-body); letter-spacing: .08em; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: 2px 5px; margin-left: 6px; vertical-align: 2px; }
+  .vt { margin-top: 2px; }
+  .vt.muted { color: var(--muted); }
+  .ask { font-style: italic; color: var(--muted); margin-top: 14px; }
   .chips { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .chip {
     display: flex; gap: 10px; align-items: center; min-width: 0;
@@ -136,7 +145,7 @@
     border: 1px solid color-mix(in srgb, var(--c) 32%, var(--line));
     border-radius: 14px; padding: 10px 12px;
   }
-  .chip b { font: 700 16px/1.15 var(--font-display); display: block; }
+  .chip b { font: 700 16px/1.15 var(--font-display); display: block; overflow-wrap: anywhere; }
   .chip span { font-size: 13px; color: var(--muted); }
   .chip > div { min-width: 0; }
   .bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
@@ -144,7 +153,26 @@
   .bh .pct { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--muted); font-weight: 500; }
   .track { height: 10px; border-radius: 5px; background: var(--track); overflow: hidden; }
   .track i { display: block; height: 100%; border-radius: 5px; background: var(--c); transform-origin: left; }
+  details { border-top: 1px solid var(--line); padding-block: 10px; }
+  details:last-child { padding-bottom: 0; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { margin-top: 8px; }
   .note { font-size: 14px; color: var(--muted); }
+
+  /* Tappable fruits, detail page, share image */
+  .chip { font: inherit; text-align: left; cursor: pointer; width: 100%; }
+  .chip .ct { display: block; min-width: 0; font-size: inherit; color: inherit; }
+  .chip small { display: block; font-size: 13px; color: var(--muted); }
+  .barbtn { display: block; width: 100%; background: none; border: 0; margin: 0; padding: 6px 4px; font: inherit; color: inherit; text-align: left; cursor: pointer; border-radius: 10px; }
+  .barbtn:hover { background: var(--track); }
+  .barbtn .bh { margin-bottom: 6px; }
+  .barbtn .track { display: block; }
+  .chev { color: var(--muted); font-size: 20px; line-height: 1; margin-left: 2px; }
+  .linkbtn { background: none; border: 0; padding: 0; font: inherit; font-weight: 700; color: var(--accent); text-decoration: underline; cursor: pointer; }
+  .hint { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+  .hero .pctline { margin-top: 6px; font-weight: 600; opacity: .92; }
+  .topback { justify-self: start; }
+  #sharepanel img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); }
   textarea#fallback { width: 100%; margin-top: 10px; min-height: 84px; font: 14px/1.4 var(--font-body); color: var(--ink); background: var(--surface); border: 2px solid var(--line); border-radius: 12px; padding: 10px; }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -161,9 +189,11 @@
 <main class="wrap">
 
   <section id="intro" class="screen">
-    <p class="eyebrow">Galatians 5:22–23</p>
+    <p class="eyebrow">Fruits of the Spirit</p>
     <h1>Which fruit is in season for you?</h1>
     <p class="lede">Ten questions about the last few weeks. Answer by instinct, and you’ll see which of the nine fruits of the Spirit is ripening in your life right now.</p>
+    <p class="scripture">But the fruit of the Spirit is love, joy, peace, longsuffering, kindness, goodness, faithfulness, gentleness, self-control. Against such there is no law.</p>
+    <p class="cite">Galatians 5:22–23 · NKJV</p>
     <ul class="legend" id="legend" aria-label="The nine fruits"></ul>
     <div class="row">
       <button class="btn" id="start" type="button">Start the quiz</button>
@@ -189,135 +219,177 @@
     <div class="stack" id="details"></div>
   </section>
 
+  <section id="fruit" class="screen" hidden>
+    <div class="stack" id="fruitbody"></div>
+  </section>
+
 </main>
 
 <script>
 (function () {
   var LEAF = '#4C9A2A';
+
+  /* ic = which drawing to use. Greek words and definitions come from the Fruits of the Spirit slides. */
   var FRUITS = [
-    { id: 'love', name: 'Love', fruit: 'Strawberry', c: '#D6304A', on: '#FFFFFF',
+    { id: 'love', ic: 'apple', name: 'Love', fruit: 'Apple', c: '#D8392B', on: '#FFFFFF',
+      greek: 'ἀγάπη', tr: 'agape', def: 'Highest form of love, selfless love.',
       line: 'Your heart is leaning toward people.',
       season: 'You’re being drawn toward people: noticing them, praying for them, giving time you didn’t have to give. Love is growing when you choose someone’s good over your own comfort, even in small ways.',
       tend: ['Pray for one person by name each morning.', 'Say the kind thing out loud instead of only thinking it.', 'Spend one unhurried hour with someone who is hard to love.'],
-      verse: '1 Corinthians 13:4–7', ask: 'Who is God asking you to love in a concrete way this week?',
+      verses: [{ ref: 'John 3:16', tr: 'NKJV', text: 'For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.' }],
+      ask: 'Who is God asking you to love in a concrete way this week?',
       step: 'Pray for one person by name today.' },
-    { id: 'joy', name: 'Joy', fruit: 'Pineapple', c: '#F2B705', on: '#2B2000',
+    { id: 'joy', ic: 'avocado', name: 'Joy', fruit: 'Avocado', c: '#86B83C', on: '#14240A',
+      greek: 'χαρά', tr: 'chara', def: 'Joyousness caused by the Holy Spirit.',
       line: 'Gladness is rising, even on ordinary days.',
       season: 'Gratitude has been coming easily, and you’re finding reasons to celebrate. This joy doesn’t depend on everything going well. It’s the steady gladness of knowing you’re held.',
       tend: ['Write three lines of gratitude at night.', 'Celebrate a small win with someone else.', 'Play a song you love on your way somewhere.'],
-      verse: 'Nehemiah 8:10', ask: 'What is one gift from this week you haven’t thanked God for yet?',
+      verses: [
+        { ref: 'John 15:11', tr: 'KJV', text: 'These things have I spoken unto you, that my joy might remain in you, and that your joy might be full.' },
+        { ref: 'John 15:9–10', tr: 'NKJV', text: 'As the Father loved Me, I also have loved you; abide in My love. If you keep My commandments, you will abide in My love, just as I have kept My Father’s commandments and abide in His love.' }],
+      ask: 'What is one gift from this week you haven’t thanked God for yet?',
       step: 'Name three things you’re grateful for tonight.' },
-    { id: 'peace', name: 'Peace', fruit: 'Blueberry', c: '#3F5FBF', on: '#FFFFFF',
+    { id: 'peace', ic: 'pineapple', name: 'Peace', fruit: 'Pineapple', c: '#F4C20D', on: '#2B2000',
+      greek: 'εἰρήνη', tr: 'eirene', def: 'The tranquil state of a soul assured of its salvation through Christ, and so fearing nothing from God and content with its earthly lot, of whatsoever sort that is.',
       line: 'A calm is settling in beneath the noise.',
       season: 'Things around you may still be unresolved, but something inside you has stopped gripping. You’re trusting that you don’t have to hold everything together. Peace is ripening when your calm doesn’t depend on the outcome.',
       tend: ['Hand one worry to God in writing each day.', 'Protect ten quiet minutes with no screen.', 'Go to bed without trying to solve tomorrow first.'],
-      verse: 'Philippians 4:6–7', ask: 'What would change if you believed you were already held?',
+      verses: [
+        { ref: 'Romans 15:13', tr: 'KJV', text: 'Now the God of hope fill you with all joy and peace in believing, that ye may abound in hope, through the power of the Holy Ghost.' },
+        { ref: 'John 14:27', tr: 'KJV', text: 'Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be troubled, neither let it be afraid.' }],
+      ask: 'What would change if you believed you were already held?',
       step: 'Take ten quiet minutes with no screen.' },
-    { id: 'patience', name: 'Patience', fruit: 'Plum', c: '#7A3E8E', on: '#FFFFFF',
+    { id: 'patience', ic: 'strawberry', name: 'Long-suffering', fruit: 'Strawberry', c: '#C2185B', on: '#FFFFFF',
+      greek: 'μακροθυμία', tr: 'makrothymia', def: 'Slowness in avenging wrongs, patience, endurance, constancy.',
       line: 'You’re learning to wait without wilting.',
-      season: 'You’re in a stretch of waiting: for an answer, for a person to change, for a prayer to be answered. Patience is growing as you stay faithful in the slow middle instead of forcing a result.',
+      season: 'You’re in a stretch of waiting: for an answer, for a person to change, for a prayer to be answered. Long-suffering is growing as you stay steady in the slow middle instead of forcing a result.',
       tend: ['Choose one slow thing and refuse to rush it.', 'When you’re irritated, count to ten and ask what the other person needs.', 'Write down what God has already brought you through.'],
-      verse: 'James 5:7–8', ask: 'What are you waiting on, and how might God be working inside the waiting?',
+      verses: [{ ref: 'Colossians 1:9–11', tr: 'NKJV', text: '…strengthened with all might, according to His glorious power, for all patience and longsuffering with joy.' }],
+      ask: 'What are you waiting on, and how might God be working inside the waiting?',
       step: 'Pause ten seconds before reacting today.' },
-    { id: 'kindness', name: 'Kindness', fruit: 'Peach', c: '#F28C7A', on: '#3A1410',
+    { id: 'kindness', ic: 'mango', name: 'Kindness', fruit: 'Mango', c: '#F59E2E', on: '#2B1500',
+      greek: 'χρηστότης', tr: 'chrēstotēs', def: 'A virtue that refuses to inflict unnecessary pain and puts the needs of others first.',
       line: 'Soft, practical care is flowing out of you.',
       season: 'You’ve been noticing what people need and meeting it quietly, often without being asked. Kindness is ripening when your care becomes something another person can actually feel and use.',
       tend: ['Do one small, unseen favor each day.', 'Text someone who crossed your mind.', 'Assume the best about the next person who annoys you.'],
-      verse: 'Ephesians 4:32', ask: 'Who could use an unexpected act of care this week?',
+      verses: [{ ref: 'Ephesians 4:32' }],
+      ask: 'Who could use an unexpected act of care this week?',
       step: 'Send one encouraging message today.' },
-    { id: 'goodness', name: 'Goodness', fruit: 'Green apple', c: '#6DB33F', on: '#12260A',
+    { id: 'goodness', ic: 'blueberry', name: 'Goodness', fruit: 'Blueberry', c: '#3F5FBF', on: '#FFFFFF',
+      greek: 'ἀγαθωσύνη', tr: 'agathōsynē', def: 'Uprightness of heart and life, generosity.',
       line: 'Your private life is lining up with your public one.',
       season: 'You’re choosing what’s right even when it costs you and no one is watching. Goodness is growing as integrity becomes less of a struggle and more of who you are.',
       tend: ['Keep one promise you’ve been quietly putting off.', 'Say the honest thing, and say it kindly.', 'Give generously in a way no one will notice.'],
-      verse: 'Galatians 6:9–10', ask: 'Where is God inviting you to be the same person in private as in public?',
+      verses: [{ ref: 'Galatians 6:9–10' }],
+      ask: 'Where is God inviting you to be the same person in private as in public?',
       step: 'Follow through on one thing you said you’d do.' },
-    { id: 'faithfulness', name: 'Faithfulness', fruit: 'Fig', c: '#7A4A3A', on: '#FFFFFF',
+    { id: 'faithfulness', ic: 'olive', name: 'Faithfulness', fruit: 'Olive', c: '#6B7A1E', on: '#FFFFFF',
+      greek: 'πίστις', tr: 'pistis', def: 'A conviction or belief about our relationship to God and divine things, with the idea of trust and holy fervour born of faith and joined with it.',
       line: 'You’re showing up, and you’re staying.',
       season: 'You’re keeping your word, finishing what you started, and leaning on God’s steadiness even when it isn’t exciting. Faithfulness grows in the unglamorous, repeated yeses.',
       tend: ['Keep one small daily habit for thirty days.', 'Return the call or finish the task you’ve been avoiding.', 'Recall one time God came through for you.'],
-      verse: 'Lamentations 3:22–23', ask: 'Where has God been steady with you that you can lean on today?',
+      verses: [{ ref: 'Matthew 8:10', tr: 'NKJV', text: 'When Jesus heard it, He marveled, and said to those who followed, “Assuredly, I say to you, I have not found such great faith, not even in Israel!”' }],
+      ask: 'Where has God been steady with you that you can lean on today?',
       step: 'Do the next small thing you’ve committed to.' },
-    { id: 'gentleness', name: 'Gentleness', fruit: 'Pear', c: '#B7C467', on: '#222808',
+    { id: 'gentleness', ic: 'grapes', name: 'Gentleness', fruit: 'Grapes', c: '#8E4A9F', on: '#FFFFFF',
+      greek: 'πραότης', tr: 'praotēs', def: 'Gentleness or meekness is the opposite of self-assertiveness and self-interest. It stems from trust in God’s goodness and control over the situation. The gentle person is not occupied with self at all. This is a work of the Holy Spirit, not of the human will.',
       line: 'Strength is learning to be tender.',
       season: 'You’re softening: in how you speak, in how you handle disagreement, in how you treat yourself. Gentleness isn’t weakness. It’s strength that has learned to hold things carefully.',
       tend: ['Lower your voice and slow your reply in the next tense talk.', 'Speak to yourself the way you’d speak to a friend.', 'Ask one more question before offering your opinion.'],
-      verse: 'Proverbs 15:1', ask: 'Where could a softer answer open a door that firmness has kept shut?',
+      verses: [{ ref: 'Matthew 5:5', tr: 'NKJV', text: 'Blessed are the meek, for they shall inherit the earth.' }],
+      ask: 'Where could a softer answer open a door that firmness has kept shut?',
       step: 'Answer the next hard message more softly.' },
-    { id: 'selfcontrol', name: 'Self-control', fruit: 'Orange', c: '#E8711A', on: '#2B1203',
+    { id: 'selfcontrol', ic: 'orange', name: 'Self-control', fruit: 'Orange', c: '#E4601B', on: '#2B1203',
+      greek: 'ἐγκράτεια', tr: 'egkrateia', def: 'Self-control: the virtue of one who masters his desires and passions, especially his sensual appetites.',
       line: 'You’re learning to steer instead of just react.',
       season: 'You’re pausing before you respond, saying no to some good things for better ones, and giving shape to your days. Self-control is growing when discipline starts to feel like freedom instead of restriction.',
       tend: ['Pick one habit to pause before, rather than ban.', 'Set a start and stop time for your phone.', 'Decide your response to a hard moment before it arrives.'],
-      verse: '2 Timothy 1:7', ask: 'What would you like to say yes to, if you said no to something else?',
+      verses: [
+        { ref: 'Titus 2:11–12', tr: 'NIV', text: 'For the grace of God has appeared that offers salvation to all people. It teaches us to say “No” to ungodliness and worldly passions, and to live self-controlled, upright and godly lives in this present age.' },
+        { ref: 'Matthew 4:4, 7, 10', tr: 'NKJV', text: 'It is written, “Man shall not live by bread alone, but by every word that proceeds from the mouth of God.” It is written again, “You shall not tempt the Lord your God.” Away with you, Satan! For it is written, “You shall worship the Lord your God, and Him only you shall serve.”' }],
+      ask: 'What would you like to say yes to, if you said no to something else?',
       step: 'Take three breaths before your next reaction.' }
   ];
-  var BY = {};
-  FRUITS.forEach(function (f) { BY[f.id] = f; });
 
-  /* Each option: [text, primary fruit (2 pts), secondary fruit (1 pt)] */
+  /* Each option: [text, primary fruit (2 pts), secondary fruit (1 pt)].
+     Every question leaves exactly one fruit out, so each fruit appears in 9 of 10 questions
+     (Self-control in 8), 4 or 5 times as primary. Option order is shuffled for each quiz. */
   var Q = [
     { q: 'Over the last few weeks, what has your heart been doing most?', o: [
       ['Leaning toward people, wanting to know them and be known', 'love', 'kindness'],
-      ['Finding reasons to celebrate, even on ordinary days', 'joy', 'love'],
-      ['Settling down and breathing slower, even with things unresolved', 'peace', 'faithfulness'],
-      ['Waiting on something that hasn’t arrived yet', 'patience', 'selfcontrol'] ] },
+      ['Settling down and breathing slower, even with things unresolved', 'peace', 'gentleness'],
+      ['Waiting on something that hasn’t arrived yet, and staying steady', 'patience', 'selfcontrol'],
+      ['Keeping my commitments even when I don’t feel like it', 'faithfulness', 'goodness'] ] },
     { q: 'A friend cancels on you at the last minute, again. What happens inside first?', o: [
-      ['I feel a flicker of hurt, but I’m already wondering how they’re doing', 'kindness', 'love'],
-      ['I’m fine. Plans change, and my day isn’t ruined', 'peace', 'joy'],
-      ['I hold off replying until I can do it well', 'selfcontrol', 'gentleness'],
-      ['I check in softly, in case something is wrong', 'gentleness', 'kindness'] ] },
+      ['I laugh it off and look for something good in the free evening', 'joy', 'peace'],
+      ['I wonder what they’re carrying and think of a way to help', 'kindness', 'goodness'],
+      ['I check in softly and give them room to explain', 'gentleness', 'patience'],
+      ['I hold off replying until I can answer well, and I still reschedule', 'selfcontrol', 'faithfulness'] ] },
     { q: 'Which of these has taken the most effort lately?', o: [
-      ['Showing up consistently when no one is clapping', 'faithfulness', 'selfcontrol'],
-      ['Doing the right thing when a shortcut was easier', 'goodness', 'faithfulness'],
-      ['Staying with a slow process or a difficult person', 'patience', 'love'],
-      ['Saying no to something I really wanted', 'selfcontrol', 'goodness'] ] },
+      ['Noticing people’s needs when I’m already tired', 'kindness', 'love'],
+      ['Doing the right thing when a shortcut was easier', 'goodness', 'selfcontrol'],
+      ['Showing up consistently when no one is clapping', 'faithfulness', 'patience'],
+      ['Staying thankful and light when things felt heavy', 'joy', 'gentleness'] ] },
     { q: 'What does your prayer or quiet time sound like right now?', o: [
-      ['Mostly thank-yous and wonder', 'joy', 'peace'],
-      ['A lot of “how long, Lord?”', 'patience', 'faithfulness'],
-      ['Naming people I want to bless, or forgive', 'love', 'kindness'],
-      ['Quiet. Just resting in being held', 'peace', 'gentleness'] ] },
+      ['Quiet. Just resting in being held', 'peace', 'joy'],
+      ['Soft and honest, more listening than asking', 'gentleness', 'love'],
+      ['A lot of “how long, Lord?” and “I’ll keep trusting”', 'patience', 'faithfulness'],
+      ['Asking for help to choose well in specific decisions', 'selfcontrol', 'goodness'] ] },
     { q: 'A coworker takes credit for your idea. What are you most likely to do?', o: [
-      ['Say so plainly and honestly, without needing to win', 'goodness', 'gentleness'],
-      ['Let it go. I know what I contributed and who I answer to', 'faithfulness', 'peace'],
-      ['Wait a day, then talk to them calmly', 'selfcontrol', 'patience'],
-      ['Approach them gently, assuming it wasn’t on purpose', 'gentleness', 'kindness'] ] },
+      ['Stay warm toward them while I raise it honestly', 'love', 'gentleness'],
+      ['Let it go. I know what I contributed and who I answer to', 'peace', 'faithfulness'],
+      ['Assume it wasn’t on purpose and keep things light', 'kindness', 'joy'],
+      ['Say so plainly and honestly, without needing to win', 'goodness', 'selfcontrol'] ] },
     { q: 'Which kind of moment is giving you the most energy?', o: [
-      ['Laughing until it hurts with people I love', 'joy', 'love'],
-      ['Quietly helping someone without being asked', 'kindness', 'goodness'],
+      ['Slow mornings with no rushing', 'gentleness', 'peace'],
       ['Finishing something I said I would do', 'faithfulness', 'selfcontrol'],
-      ['Slow mornings with no rushing', 'peace', 'gentleness'] ] },
+      ['Laughing until it hurts with people I love', 'joy', 'love'],
+      ['Seeing a slow project or person finally come along', 'patience', 'kindness'] ] },
     { q: 'Someone who is struggling says something sharp to you. What’s your instinct?', o: [
-      ['Soften my tone and lower the temperature', 'gentleness', 'peace'],
-      ['Stay close anyway, because sharp words are often pain talking', 'love', 'patience'],
-      ['Do something practical to help, without a speech', 'kindness', 'goodness'],
-      ['Pause and breathe before I answer', 'selfcontrol', 'patience'] ] },
+      ['Pause and breathe before I answer', 'selfcontrol', 'patience'],
+      ['Stay calm and not take it personally', 'peace', 'joy'],
+      ['Do something practical to help, without a speech', 'kindness', 'love'],
+      ['Respond honestly and stay with them anyway', 'goodness', 'faithfulness'] ] },
     { q: 'Which sentence sounds most like your inner voice this season?', o: [
-      ['God has been faithful, so I’ll keep going', 'faithfulness', 'joy'],
-      ['I want my life to be quietly good, not just look good', 'goodness', 'faithfulness'],
-      ['It’s okay if this takes longer than I planned', 'patience', 'peace'],
-      ['There is so much to be grateful for', 'joy', 'kindness'] ] },
+      ['I’d rather choose well than choose fast', 'selfcontrol', 'goodness'],
+      ['I don’t have to push to be strong', 'gentleness', 'peace'],
+      ['People matter more than my plans', 'love', 'kindness'],
+      ['There is so much to be grateful for, even in the waiting', 'joy', 'patience'] ] },
     { q: 'Where do you feel God stretching you most right now?', o: [
-      ['Loving people who are hard to love', 'love', 'patience'],
-      ['Choosing integrity when nobody is watching', 'goodness', 'selfcontrol'],
-      ['Learning to be tender instead of tough', 'gentleness', 'love'],
-      ['Trusting calm when circumstances feel loud', 'peace', 'faithfulness'] ] },
+      ['Staying committed when it would be easier to quit', 'faithfulness', 'goodness'],
+      ['Trusting calm when circumstances feel loud', 'peace', 'joy'],
+      ['Making room for people who are inconvenient', 'kindness', 'love'],
+      ['Learning to be tender instead of tough', 'gentleness', 'patience'] ] },
     { q: 'If a close friend described you this month, what would they most likely say?', o: [
-      ['They make me feel noticed and cared for', 'kindness', 'love'],
-      ['Steady. You can count on them', 'faithfulness', 'goodness'],
-      ['Disciplined and intentional', 'selfcontrol', 'faithfulness'],
-      ['Light and joyful to be around', 'joy', 'peace'] ] }
+      ['Steady. You can count on them', 'faithfulness', 'peace'],
+      ['They make me feel noticed and cared for', 'love', 'kindness'],
+      ['Patient. They don’t rush me or give up on me', 'patience', 'gentleness'],
+      ['The same person in private as in public, and quick to smile', 'goodness', 'joy'] ] }
   ];
 
-  /* Most points each fruit could earn, so fruits that appear more often aren't favored. */
-  var MAX = {};
-  FRUITS.forEach(function (f) { MAX[f.id] = 0; });
-  Q.forEach(function (q) {
-    var m = {};
-    q.o.forEach(function (o) {
-      m[o[1]] = Math.max(m[o[1]] || 0, 2);
-      m[o[2]] = Math.max(m[o[2]] || 0, 1);
+  /* Scoring is calibrated. Each fruit's points are compared with what a random set of answers
+     would earn that fruit, so a fruit that simply appears in more options doesn't win more often. */
+  var MEAN = {}, SD = {};
+  (function () {
+    var vr = {};
+    FRUITS.forEach(function (f) { MEAN[f.id] = 0; vr[f.id] = 0; });
+    Q.forEach(function (q) {
+      FRUITS.forEach(function (f) {
+        var pts = q.o.map(function (o) { return o[1] === f.id ? 2 : (o[2] === f.id ? 1 : 0); });
+        var m = pts.reduce(function (x, y) { return x + y; }, 0) / pts.length;
+        var v = pts.reduce(function (x, y) { return x + (y - m) * (y - m); }, 0) / pts.length;
+        MEAN[f.id] += m; vr[f.id] += v;
+      });
     });
-    Object.keys(m).forEach(function (k) { MAX[k] += m[k]; });
-  });
+    FRUITS.forEach(function (f) { SD[f.id] = Math.sqrt(vr[f.id]) || 1; });
+  })();
+
+  function phi(z) {
+    var t = 1 / (1 + 0.2316419 * Math.abs(z));
+    var d = 0.3989423 * Math.exp(-z * z / 2);
+    var p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274))));
+    return z > 0 ? 1 - p : p;
+  }
 
   function score(answers) {
     var S = {};
@@ -328,39 +400,51 @@
       S[o[2]] += 1;
     });
     return FRUITS.map(function (f, i) {
-      return { f: f, i: i, raw: S[f.id], ratio: S[f.id] / MAX[f.id] };
-    }).sort(function (a, b) { return (b.ratio - a.ratio) || (b.raw - a.raw) || (a.i - b.i); });
+      var z = (S[f.id] - MEAN[f.id]) / SD[f.id];
+      return { f: f, i: i, raw: S[f.id], z: z, pct: Math.min(99, Math.max(1, Math.round(100 * phi(z)))) };
+    }).sort(function (x, y) { return (y.z - x.z) || (y.raw - x.raw) || (x.i - y.i); });
   }
 
   /* Fruit drawings, 64x64 */
+  function grapes() {
+    var rows = [[17, 27, 37, 47], [22, 32, 42], [27, 37], [32]];
+    var ys = [26, 35, 44, 53];
+    var s = '<path d="M32 20V9M24 10h16" stroke="#2F6B2A" stroke-width="3" stroke-linecap="round" fill="none"/>';
+    rows.forEach(function (r, i) {
+      r.forEach(function (x) {
+        s += '<circle cx="' + x + '" cy="' + ys[i] + '" r="6" fill="#8E4A9F"/><circle cx="' + (x - 2) + '" cy="' + (ys[i] - 2) + '" r="1.7" fill="#fff" opacity=".5"/>';
+      });
+    });
+    return s;
+  }
   var ICONS = {
-    love: '<path d="M32 58C16 46 8 34 10 24c2-8 12-10 22-4 10-6 20-4 22 4 2 10-6 22-22 34z" fill="#D6304A"/><path d="M32 58C16 46 8 34 10 24c2-8 8-10 14-8-10 8-6 24 8 42z" fill="#8F1630" opacity=".28"/><path d="M19 21l13-9 13 9-7 3-6-3-6 3z" fill="' + LEAF + '"/><g fill="#FFE9A8"><ellipse cx="22" cy="31" rx="1.6" ry="2.4"/><ellipse cx="32" cy="29" rx="1.6" ry="2.4"/><ellipse cx="42" cy="31" rx="1.6" ry="2.4"/><ellipse cx="26" cy="41" rx="1.6" ry="2.4"/><ellipse cx="38" cy="41" rx="1.6" ry="2.4"/><ellipse cx="32" cy="49" rx="1.6" ry="2.4"/></g>',
-    joy: '<path d="M32 26L24 8l6 8 2-12 2 12 6-8z" fill="' + LEAF + '"/><ellipse cx="32" cy="42" rx="15" ry="18" fill="#F2B705"/><path d="M23 33l3 3 3-3M32 33l3 3 3-3M27 42l3 3 3-3M36 42l3 3 3-3M23 51l3 3 3-3M32 51l3 3 3-3" stroke="#A97800" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/><ellipse cx="24" cy="36" rx="2.4" ry="6" fill="#fff" opacity=".28"/>',
-    peace: '<circle cx="32" cy="36" r="21" fill="#3F5FBF"/><circle cx="32" cy="23" r="6" fill="#2B4296"/><path d="M32 18l1.6 3.3 3.6.5-2.6 2.5.6 3.6-3.2-1.7-3.2 1.7.6-3.6-2.6-2.5 3.6-.5z" fill="#7C97E8"/><ellipse cx="22" cy="34" rx="3.4" ry="6" fill="#fff" opacity=".25" transform="rotate(20 22 34)"/>',
-    patience: '<path d="M32 22c0-6 2-9 5-12" stroke="#5B3B24" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M37 12c6-5 13-3 15 1-6 4-12 3-15-1z" fill="' + LEAF + '"/><circle cx="32" cy="40" r="19" fill="#7A3E8E"/><path d="M32 22c-5 10-5 26 0 37" stroke="#552765" stroke-width="2.2" stroke-linecap="round" fill="none"/><ellipse cx="22" cy="36" rx="3" ry="6" fill="#fff" opacity=".22" transform="rotate(15 22 36)"/>',
-    kindness: '<path d="M32 22C20 14 8 24 12 40c3 12 14 18 20 16 6 2 17-4 20-16 4-16-8-26-20-18z" fill="#F28C7A"/><path d="M32 22c-4 10-3 24 1 34" stroke="#D2604F" stroke-width="2.2" stroke-linecap="round" fill="none"/><ellipse cx="46" cy="36" rx="5" ry="9" fill="#F9B6A6" opacity=".6"/><path d="M33 20c0-5 2-8 4-9" stroke="#5B3B24" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M37 12c6-5 14-3 16 1-6 4-13 4-16-1z" fill="' + LEAF + '"/>',
-    goodness: '<path d="M32 24C24 15 10 21 12 37c1 12 10 22 20 18 10 4 19-6 20-18 2-16-12-22-20-13z" fill="#6DB33F"/><path d="M32 24c0-6 2-10 5-13" stroke="#5B3B24" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M37 14c6-5 13-3 15 1-6 4-12 3-15-1z" fill="#3F7F22"/><ellipse cx="22" cy="34" rx="3.2" ry="7" fill="#fff" opacity=".28" transform="rotate(15 22 34)"/>',
-    faithfulness: '<path d="M32 14c8 0 18 16 18 28 0 10-8 16-18 16S14 52 14 42c0-12 10-28 18-28z" fill="#7A4A3A"/><path d="M26 30c0 9 2 18 6 27M38 30c0 9-2 18-6 27" stroke="#55301F" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M32 14V8" stroke="#5B3B24" stroke-width="3" stroke-linecap="round"/><ellipse cx="23" cy="40" rx="2.6" ry="6.5" fill="#fff" opacity=".2" transform="rotate(10 23 40)"/>',
-    gentleness: '<path d="M32 12c6 0 8 8 8 14 0 5 6 8 8 16 2 10-6 16-16 16S14 52 16 42c2-8 8-11 8-16 0-6 2-14 8-14z" fill="#B7C467"/><path d="M32 12c0-3 1-5 3-7" stroke="#5B3B24" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M35 8c5-4 11-2 13 1-5 3-10 3-13-1z" fill="' + LEAF + '"/><ellipse cx="42" cy="46" rx="4" ry="7" fill="#D9E19A" opacity=".6"/><ellipse cx="25" cy="44" rx="2.6" ry="6" fill="#fff" opacity=".28" transform="rotate(12 25 44)"/>',
-    selfcontrol: '<circle cx="32" cy="37" r="21" fill="#E8711A"/><g fill="#BF5206"><circle cx="22" cy="34" r="1.1"/><circle cx="30" cy="44" r="1.1"/><circle cx="41" cy="38" r="1.1"/><circle cx="36" cy="30" r="1.1"/><circle cx="25" cy="48" r="1.1"/><circle cx="44" cy="48" r="1.1"/></g><path d="M32 16c0-3 1-5 2-6" stroke="#5B3B24" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M34 14c6-6 14-4 17 0-6 5-13 5-17 0z" fill="' + LEAF + '"/><ellipse cx="22" cy="30" rx="3.2" ry="6.5" fill="#fff" opacity=".26" transform="rotate(18 22 30)"/>'
+    apple: '<path d="M32 24C24 15 10 21 12 37c1 12 10 22 20 18 10 4 19-6 20-18 2-16-12-22-20-13z" fill="#D8392B"/><path d="M32 24c0-6 2-10 5-13" stroke="#5B3B24" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M37 14c6-5 13-3 15 1-6 4-12 3-15-1z" fill="#3F7F22"/><ellipse cx="22" cy="34" rx="3.2" ry="7" fill="#fff" opacity=".3" transform="rotate(15 22 34)"/>',
+    avocado: '<path d="M32 8c6 0 9 9 9 16 0 5 8 9 8 19 0 9-8 15-17 15s-17-6-17-15c0-10 8-14 8-19 0-7 3-16 9-16z" fill="#4E6B24"/><path d="M32 12c4.5 0 6.500 7 6.500 12.500 0 5.500 7.500 9.500 7.500 18.500 0 7.500-6.500 12.500-14 12.500S18 51 18 43.500c0-9 7.500-13 7.500-18.500C25.500 19 27.500 12 32 12z" fill="#86B83C"/><path d="M32 16c3 0 4.500 5.500 4.500 9.500 0 5 7.500 9 7.500 17 0 5.800-5 9.500-12 9.500s-12-3.700-12-9.500c0-8 7.500-12 7.500-17C27.500 21.500 29 16 32 16z" fill="#E1EE7A"/><circle cx="32" cy="43" r="8" fill="#8A5530"/><ellipse cx="29.500" cy="40.500" rx="2.200" ry="3" fill="#fff" opacity=".28"/>',
+    pineapple: '<path d="M32 26L24 8l6 8 2-12 2 12 6-8z" fill="' + LEAF + '"/><ellipse cx="32" cy="42" rx="15" ry="18" fill="#F4A800"/><path d="M23 33l3 3 3-3M32 33l3 3 3-3M27 42l3 3 3-3M36 42l3 3 3-3M23 51l3 3 3-3M32 51l3 3 3-3" stroke="#B26A00" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/><ellipse cx="24" cy="36" rx="2.4" ry="6" fill="#fff" opacity=".28"/>',
+    strawberry: '<path d="M32 58C16 46 8 34 10 24c2-8 12-10 22-4 10-6 20-4 22 4 2 10-6 22-22 34z" fill="#C2185B"/><path d="M32 58C16 46 8 34 10 24c2-8 8-10 14-8-10 8-6 24 8 42z" fill="#7E0E3A" opacity=".3"/><path d="M19 21l13-9 13 9-7 3-6-3-6 3z" fill="' + LEAF + '"/><g fill="#FFE9A8"><ellipse cx="22" cy="31" rx="1.6" ry="2.4"/><ellipse cx="32" cy="29" rx="1.6" ry="2.4"/><ellipse cx="42" cy="31" rx="1.6" ry="2.4"/><ellipse cx="26" cy="41" rx="1.6" ry="2.4"/><ellipse cx="38" cy="41" rx="1.6" ry="2.4"/><ellipse cx="32" cy="49" rx="1.6" ry="2.4"/></g>',
+    mango: '<path d="M14 40C13 24 25 12 40 14c10 2 14 12 10 25-4 12-14 19-24 17-8-2-11-8-12-16z" fill="#F59E2E"/><ellipse cx="27" cy="29" rx="7" ry="11" fill="#E2452B" opacity=".55" transform="rotate(30 27 29)"/><path d="M38 14c1-4 3-6 5-7" stroke="#5B3B24" stroke-width="2.600" stroke-linecap="round" fill="none"/><path d="M43 8c5-3 10-1 12 2-5 3-10 2-12-2z" fill="' + LEAF + '"/><ellipse cx="22" cy="42" rx="2.400" ry="6" fill="#fff" opacity=".3" transform="rotate(20 22 42)"/>',
+    blueberry: '<circle cx="32" cy="36" r="21" fill="#3F5FBF"/><circle cx="32" cy="23" r="6" fill="#2B4296"/><path d="M32 18l1.600 3.300 3.600.5-2.600 2.500.6 3.600-3.200-1.700-3.200 1.700.6-3.600-2.600-2.500 3.600-.5z" fill="#7C97E8"/><ellipse cx="22" cy="34" rx="3.400" ry="6" fill="#fff" opacity=".25" transform="rotate(20 22 34)"/>',
+    olive: '<ellipse cx="24" cy="40" rx="11" ry="16" fill="#6B7A1E"/><ellipse cx="42" cy="34" rx="11" ry="16" fill="#86982B" transform="rotate(14 42 34)"/><ellipse cx="24" cy="29" rx="4.500" ry="3.200" fill="#C9402A"/><ellipse cx="45" cy="23" rx="4.500" ry="3.200" fill="#C9402A" transform="rotate(14 45 23)"/><ellipse cx="20" cy="42" rx="2" ry="5.500" fill="#fff" opacity=".25"/><ellipse cx="38" cy="36" rx="2" ry="5.500" fill="#fff" opacity=".25" transform="rotate(14 38 36)"/>',
+    grapes: grapes(),
+    orange: '<circle cx="32" cy="37" r="21" fill="#E8711A"/><g fill="#BF5206"><circle cx="22" cy="34" r="1.100"/><circle cx="30" cy="44" r="1.100"/><circle cx="41" cy="38" r="1.100"/><circle cx="36" cy="30" r="1.100"/><circle cx="25" cy="48" r="1.100"/><circle cx="44" cy="48" r="1.100"/></g><path d="M32 16c0-3 1-5 2-6" stroke="#5B3B24" stroke-width="2.400" stroke-linecap="round" fill="none"/><path d="M34 14c6-6 14-4 17 0-6 5-13 5-17 0z" fill="' + LEAF + '"/><ellipse cx="22" cy="30" rx="3.200" ry="6.500" fill="#fff" opacity=".26" transform="rotate(18 22 30)"/>'
   };
-  function icon(id, size) {
-    return '<svg viewBox="0 0 64 64" width="' + size + '" height="' + size + '" aria-hidden="true" focusable="false">' + ICONS[id] + '</svg>';
+  function icon(key, size) {
+    return '<svg viewBox="0 0 64 64" width="' + size + '" height="' + size + '" aria-hidden="true" focusable="false">' + ICONS[key] + '</svg>';
   }
 
   /* Elements */
   var $ = function (id) { return document.getElementById(id); };
-  var intro = $('intro'), quiz = $('quiz'), result = $('result');
-  var idx = 0, answers = [];
+  var intro = $('intro'), quiz = $('quiz'), result = $('result'), fruitScr = $('fruit');
+  var idx = 0, answers = [], orders = [];
 
-  function show(el) {
-    [intro, quiz, result].forEach(function (s) { s.hidden = (s !== el); });
-    window.scrollTo(0, 0);
+  function show(el, keep) {
+    [intro, quiz, result, fruitScr].forEach(function (s) { s.hidden = (s !== el); });
+    if (!keep) window.scrollTo(0, 0);
   }
 
   /* Intro legend */
   $('legend').innerHTML = FRUITS.map(function (f) {
-    return '<li class="tile" style="--c:' + f.c + ';--on:' + f.on + '">' + icon(f.id, 40) + '<b>' + f.name + '</b><span>' + f.fruit + '</span></li>';
+    return '<li class="tile" style="--c:' + f.c + '">' + icon(f.ic, 40) + '<b>' + f.name + '</b><span>' + f.fruit + '</span></li>';
   }).join('');
 
   /* Quiz */
@@ -372,9 +456,9 @@
       return '<span class="' + cls + '" style="--c:' + FRUITS[i % FRUITS.length].c + '"></span>';
     }).join('');
     $('qtext').textContent = q.q;
-    $('opts').innerHTML = q.o.map(function (o, i) {
-      var on = answers[idx] === i;
-      return '<label class="opt' + (on ? ' on' : '') + '"><input type="radio" name="q' + idx + '" value="' + i + '"' + (on ? ' checked' : '') + '><span class="dot"></span><span>' + o[0] + '</span></label>';
+    $('opts').innerHTML = orders[idx].map(function (oi) {
+      var o = q.o[oi], on = answers[idx] === oi;
+      return '<label class="opt' + (on ? ' on' : '') + '"><input type="radio" name="q' + idx + '" value="' + oi + '"' + (on ? ' checked' : '') + '><span class="dot"></span><span>' + o[0] + '</span></label>';
     }).join('');
     $('next').disabled = answers[idx] === undefined;
     $('next').textContent = idx === Q.length - 1 ? 'See my fruit' : 'Next';
@@ -384,13 +468,20 @@
   $('opts').addEventListener('change', function (e) {
     if (e.target && e.target.type === 'radio') {
       answers[idx] = Number(e.target.value);
-      Array.prototype.forEach.call($('opts').children, function (el, i) { el.classList.toggle('on', i === answers[idx]); });
+      Array.prototype.forEach.call($('opts').children, function (el, pos) { el.classList.toggle('on', orders[idx][pos] === answers[idx]); });
       $('next').disabled = false;
     }
   });
 
+  function shuffled(n) {
+    var a = [], i, j, t;
+    for (i = 0; i < n; i++) a.push(i);
+    for (i = n - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
   $('start').addEventListener('click', function () {
     idx = 0; answers = [];
+    orders = Q.map(function (q) { return shuffled(q.o.length); });
     show(quiz); renderQuestion();
   });
   $('back').addEventListener('click', function () {
@@ -405,57 +496,241 @@
 
   /* Result */
   var summaryText = '';
+  var ranked = [];
+  var pctOf = {};
+  var resultScroll = 0, opener = null, currentShare = null;
+  var BODY = '"Figtree","Segoe UI",system-ui,sans-serif';
+  var DISP = '"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif';
+  var BYID = {};
+  FRUITS.forEach(function (f) { BYID[f.id] = f; });
+
+  function verseHtml(v) {
+    var h = '<p class="vref"><b>' + v.ref + '</b>' + (v.tr ? '<span class="tr">' + v.tr + '</span>' : '') + '</p>';
+    h += v.text ? '<p class="vt">' + v.text + '</p>' : '<p class="vt muted">Suggested reading. Look it up in your Bible.</p>';
+    return h;
+  }
+
+  function heroHtml(f, eyebrow, nameId, extra) {
+    return '<div class="badge">' + icon(f.ic, 72) + '</div>' +
+      '<p class="eyebrow">' + eyebrow + '</p>' +
+      '<h2 id="' + nameId + '" tabindex="-1">' + f.name + '</h2>' +
+      '<p class="greek"><b>' + f.greek + '</b> · ' + f.tr + '</p>' +
+      '<p class="sub">' + f.fruit + ' season. ' + f.line + '</p>' +
+      '<p class="blurb">' + f.season + '</p>' + (extra || '');
+  }
+
+  function fruitCards(f) {
+    return '<div class="card"><h3>In the Greek</h3><p class="gk"><b>' + f.greek + '</b> <i>(' + f.tr + ')</i></p><p>' + f.def + '</p></div>' +
+      '<div class="card"><h3>How to tend it</h3><ul class="tips">' + f.tend.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul></div>' +
+      '<div class="card"><h3>Sit with this</h3>' + f.verses.map(verseHtml).join('') + '<p class="ask">' + f.ask + '</p></div>';
+  }
+
   function renderResult() {
     var r = score(answers);
+    ranked = r;
+    r.forEach(function (x) { pctOf[x.f.id] = x.pct; });
+    currentShare = null;
     var top = r[0].f, second = r[1].f, third = r[2].f, last = r[r.length - 1].f;
 
     $('hero').style.setProperty('--c', top.c);
     $('hero').style.setProperty('--on', top.on);
-    $('hero').innerHTML =
-      '<div class="badge">' + icon(top.id, 72) + '</div>' +
-      '<p class="eyebrow">The fruit in season for you</p>' +
-      '<h2 id="rname" tabindex="-1">' + top.name + '</h2>' +
-      '<p class="sub">' + top.fruit + ' season. ' + top.line + '</p>' +
-      '<p class="blurb">' + top.season + '</p>';
+    $('hero').innerHTML = heroHtml(top, 'The fruit in season for you', 'rname');
 
     var chips = [second, third].map(function (f) {
-      return '<div class="chip" style="--c:' + f.c + ';--on:' + f.on + '">' + icon(f.id, 36) + '<div><b>' + f.name + '</b><span>' + f.fruit + '</span></div></div>';
+      return '<button class="chip" type="button" data-fruit="' + f.id + '" style="--c:' + f.c + '" aria-label="' + f.name + '. Read more">' + icon(f.ic, 36) + '<span class="ct"><b>' + f.name + '</b><small>' + f.fruit + '</small></span></button>';
     }).join('');
 
     var bars = r.map(function (x) {
-      var pct = Math.round(x.ratio * 100);
-      return '<li style="--c:' + x.f.c + '"><div class="bh">' + icon(x.f.id, 22) + '<span>' + x.f.name + '</span><span class="pct">' + pct + '%</span></div><div class="track" role="img" aria-label="' + x.f.name + ' ' + pct + ' percent"><i style="width:' + pct + '%"></i></div></li>';
+      var pct = pctOf[x.f.id];
+      return '<li style="--c:' + x.f.c + '"><button class="barbtn" type="button" data-fruit="' + x.f.id + '" aria-label="' + x.f.name + ', ' + pct + ' out of 100. Read more"><span class="bh">' + icon(x.f.ic, 22) + '<span>' + x.f.name + '</span><span class="pct">' + pct + '%</span><span class="chev" aria-hidden="true">›</span></span><span class="track"><i style="width:' + pct + '%"></i></span></button></li>';
     }).join('');
 
     summaryText = 'The fruit of the Spirit in season for me right now: ' + top.name + ' (' + top.fruit + '). Also ripening: ' + second.name + ' and ' + third.name + '.';
 
     $('details').innerHTML =
-      '<div class="card"><h3>How to tend it</h3><ul class="tips">' + top.tend.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul></div>' +
-      '<div class="card"><h3>Sit with this</h3><p class="verse"><b>' + top.verse + '</b></p><p>' + top.ask + '</p></div>' +
-      '<div class="card"><h3>Also ripening</h3><div class="chips">' + chips + '</div></div>' +
-      '<div class="card"><h3>All nine, this season</h3><ul class="bars">' + bars + '</ul></div>' +
-      '<div class="card"><h3>Waiting for its season</h3><p><b>' + last.name + '</b> had the least room this month. That isn’t a failing. Fruit ripens in its own time. ' + last.step + '</p></div>' +
+      fruitCards(top) +
+      '<div class="card"><h3>Also ripening</h3><p class="hint">Tap a fruit to read more about it.</p><div class="chips">' + chips + '</div></div>' +
+      '<div class="card"><h3>All nine, this season</h3><p class="hint">A fuller bar means stronger this season, and half full is typical. Tap any fruit to read more.</p><ul class="bars">' + bars + '</ul></div>' +
+      '<div class="card"><h3>Waiting for its season</h3><p><button class="linkbtn" type="button" data-fruit="' + last.id + '">' + last.name + '</button> had the least room this month. That isn’t a failing. Fruit ripens in its own time. ' + last.step + '</p></div>' +
+      '<div class="card"><h3>How fruit grows</h3>' +
+        '<p>You don’t grow fruit by planting fruit. We sow seeds that are watered and nurtured by the Lord. The fruit comes in His time.</p>' +
+        '<p>The Holy Spirit is like a friend. The more we hang out with Him, the more we know His quirks, His likings, His dislikes. And the more we talk over Him, act over Him, the quieter He becomes. He fades away into the background of our ever bustling life.</p>' +
+        '<details><summary>Walk in the Spirit · Galatians 5:16–18</summary><p>I say then: Walk in the Spirit, and you shall not fulfill the lust of the flesh. For the flesh lusts against the Spirit, and the Spirit against the flesh; and these are contrary to one another, so that you do not do the things that you wish. But if you are led by the Spirit, you are not under the law.</p></details>' +
+        '<details><summary>When you don’t know what to pray · Romans 8:26–27</summary><p>Likewise the Spirit also helps in our weaknesses. For we do not know what we should pray for as we ought, but the Spirit Himself makes intercession for us with groanings which cannot be uttered. Now He who searches the hearts knows what the mind of the Spirit is, because He makes intercession for the saints according to the will of God.</p></details>' +
+        '<details><summary>Stay connected · John 15:5</summary><p>I am the vine, you are the branches. He who abides in Me, and I in him, bears much fruit; for without Me you can do nothing.</p></details>' +
+      '</div>' +
       '<p class="note">This is a reflection tool, not a measure of your worth or maturity. The fruit is one fruit with nine flavors, and it grows by the Spirit, not by effort alone.</p>' +
-      '<div class="row"><button class="btn" id="copy" type="button">Copy my result</button><button class="btn ghost" id="retake" type="button">Retake the quiz</button><span class="fine" id="copystatus" role="status"></span></div>' +
-      '<textarea id="fallback" readonly hidden aria-label="Result text to copy"></textarea>';
+      '<div class="row"><button class="btn" id="sharebtn" type="button">Share as image</button><button class="btn ghost" id="copy" type="button">Copy text</button><button class="btn ghost" id="retake" type="button">Retake the quiz</button></div>' +
+      '<p class="fine" id="copystatus" role="status"></p>' +
+      '<div class="card" id="sharepanel" hidden><h3>Your result image</h3><img id="previewimg" alt="Your fruit result as an image"><p class="hint" style="margin-top:10px">Press and hold the image to save it, or tap Share.</p><div class="row"><button class="btn" id="sharenow" type="button">Share</button></div></div>';
 
     show(result);
     $('rname').focus({ preventScroll: true });
   }
 
+  /* Fruit detail page */
+  function openFruit(id, btn) {
+    var f = BYID[id];
+    if (!f) return;
+    opener = btn || null;
+    resultScroll = window.scrollY || 0;
+    $('fruitbody').innerHTML =
+      '<button class="btn ghost topback" type="button" data-act="back">← Back to my result</button>' +
+      '<div class="hero" style="--c:' + f.c + ';--on:' + f.on + '">' + heroHtml(f, 'Fruit of the Spirit', 'fname', '<p class="pctline">Strength this season: ' + pctOf[f.id] + ' out of 100 (50 is typical).</p>') + '</div>' +
+      fruitCards(f) +
+      '<div class="row"><button class="btn" type="button" data-act="back">Back to my result</button></div>';
+    show(fruitScr);
+    $('fname').focus({ preventScroll: true });
+  }
+  function backToResult() {
+    show(result, true);
+    window.scrollTo(0, resultScroll);
+    if (opener && document.contains(opener)) opener.focus({ preventScroll: true });
+  }
+  fruitScr.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('button') : null;
+    if (b && b.dataset.act === 'back') backToResult();
+  });
+
+  /* Share as image */
+  function svgDoc(key, size) {
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="' + size + '" height="' + size + '">' + ICONS[key] + '</svg>';
+  }
+  function loadSvg(key) {
+    return new Promise(function (resolve) {
+      var im = new Image();
+      im.onload = function () { resolve(im); };
+      im.onerror = function () { resolve(null); };
+      im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgDoc(key, 256));
+    });
+  }
+  function spacing(g, px) { if ('letterSpacing' in g) g.letterSpacing = px + 'px'; }
+  function wrapText(g, text, x, y, maxW, lh, maxLines) {
+    var words = text.split(' '), line = '', lines = [];
+    words.forEach(function (w) {
+      var test = line ? line + ' ' + w : w;
+      if (g.measureText(test).width > maxW && line) { lines.push(line); line = w; } else { line = test; }
+    });
+    if (line) lines.push(line);
+    lines.slice(0, maxLines).forEach(function (l, i) { g.fillText(l, x, y + i * lh); });
+  }
+
+  function makeCard(top, a, b) {
+    var fonts = (document.fonts && document.fonts.load)
+      ? Promise.all([document.fonts.load('800 80px "Bricolage Grotesque"'), document.fonts.load('600 30px "Figtree"')]).catch(function () {})
+      : Promise.resolve();
+    return Promise.all([fonts, loadSvg(top.ic), loadSvg(a.ic), loadSvg(b.ic)]).then(function (res) {
+      var W = 1080, H = 1350, cv = document.createElement('canvas');
+      cv.width = W; cv.height = H;
+      var g = cv.getContext('2d');
+      var col = top.on;
+
+      g.fillStyle = top.c; g.fillRect(0, 0, W, H);
+      g.fillStyle = 'rgba(255,255,255,0.12)';
+      g.beginPath(); g.arc(W, 0, 380, 0, Math.PI * 2); g.fill();
+      g.beginPath(); g.arc(0, H, 330, 0, Math.PI * 2); g.fill();
+
+      g.textAlign = 'center'; g.textBaseline = 'alphabetic'; g.fillStyle = col;
+
+      g.globalAlpha = 0.85; g.font = '600 30px ' + BODY; spacing(g, 5);
+      g.fillText('THE FRUIT IN SEASON FOR ME', W / 2, 150);
+      spacing(g, 0); g.globalAlpha = 1;
+
+      g.fillStyle = 'rgba(255,255,255,0.94)';
+      g.beginPath(); g.arc(W / 2, 420, 190, 0, Math.PI * 2); g.fill();
+      if (res[1]) g.drawImage(res[1], W / 2 - 130, 420 - 130, 260, 260);
+
+      g.fillStyle = col;
+      var size = 124;
+      g.font = '800 ' + size + 'px ' + DISP;
+      while (g.measureText(top.name).width > 900 && size > 56) { size -= 4; g.font = '800 ' + size + 'px ' + DISP; }
+      g.fillText(top.name, W / 2, 790);
+
+      g.globalAlpha = 0.92; g.font = '500 46px ' + BODY;
+      g.fillText(top.greek + '  ·  ' + top.tr, W / 2, 860);
+      g.globalAlpha = 1;
+
+      g.font = '700 46px ' + DISP;
+      g.fillText(top.fruit + ' season', W / 2, 950);
+      g.globalAlpha = 0.92; g.font = '500 38px ' + BODY;
+      wrapText(g, top.line, W / 2, 1015, 820, 52, 2);
+      g.globalAlpha = 1;
+
+      g.globalAlpha = 0.35; g.fillRect(240, 1105, 600, 3);
+      g.globalAlpha = 0.85; g.font = '600 26px ' + BODY; spacing(g, 5);
+      g.fillText('ALSO RIPENING', W / 2, 1160);
+      spacing(g, 0); g.globalAlpha = 1;
+
+      [[a, res[2], 300], [b, res[3], 780]].forEach(function (it) {
+        var f = it[0], im = it[1], cx = it[2];
+        g.font = '700 38px ' + DISP;
+        var w = g.measureText(f.name).width, total = 68 + 16 + w, x0 = cx - total / 2;
+        if (im) g.drawImage(im, x0, 1215 - 54, 68, 68);
+        g.textAlign = 'left'; g.fillText(f.name, x0 + 84, 1215); g.textAlign = 'center';
+      });
+
+      g.globalAlpha = 0.8; g.font = '500 26px ' + BODY;
+      g.fillText('Fruit in Season · Galatians 5:22–23', W / 2, 1300);
+      g.globalAlpha = 1;
+
+      return new Promise(function (resolve) {
+        try {
+          cv.toBlob(function (blob) {
+            try { resolve(blob ? { blob: blob, url: cv.toDataURL('image/png') } : null); } catch (e) { resolve(null); }
+          }, 'image/png');
+        } catch (e) { resolve(null); }
+      });
+    }).catch(function () { return null; });
+  }
+
+  function trySystemShare() {
+    if (!currentShare) return;
+    var st = $('copystatus'), file = null;
+    try { file = new File([currentShare.blob], 'fruit-in-season.png', { type: 'image/png' }); } catch (e) { file = null; }
+    if (!file || !navigator.canShare || !navigator.canShare({ files: [file] })) {
+      st.textContent = 'Sharing isn’t available here. Press and hold the image to save it.';
+      return;
+    }
+    return navigator.share({ files: [file], title: 'Fruit in Season', text: summaryText }).then(function () {
+      st.textContent = '';
+    }, function (err) {
+      if (err && err.name !== 'AbortError') st.textContent = 'Press and hold the image to save it.';
+    });
+  }
+
+  function shareImage() {
+    var st = $('copystatus');
+    st.textContent = 'Making your image…';
+    return makeCard(ranked[0].f, ranked[1].f, ranked[2].f).then(function (res) {
+      if (!res) { st.textContent = 'Couldn’t make the image on this device. Try Copy text instead.'; return; }
+      currentShare = res; st.textContent = '';
+      $('previewimg').src = res.url;
+      $('sharepanel').hidden = false;
+      $('sharepanel').scrollIntoView({ block: 'nearest' });
+      return trySystemShare();
+    });
+  }
+
   result.addEventListener('click', function (e) {
-    var t = e.target;
-    if (!t || !t.id) return;
-    if (t.id === 'retake') { idx = 0; answers = []; show(intro); }
-    if (t.id === 'copy') {
-      var status = $('copystatus'), fb = $('fallback');
+    var b = e.target.closest ? e.target.closest('button') : null;
+    if (!b) return;
+    if (b.dataset.fruit) { openFruit(b.dataset.fruit, b); return; }
+    if (b.id === 'retake') { idx = 0; answers = []; show(intro); }
+    if (b.id === 'sharebtn') { shareImage(); }
+    if (b.id === 'sharenow') { trySystemShare(); }
+    if (b.id === 'copy') {
+      var status = $('copystatus');
+      var fb = document.createElement('textarea');
       var fallback = function () {
-        fb.hidden = false; fb.value = summaryText; fb.focus(); fb.select();
+        fb.id = 'fallback'; fb.readOnly = true; fb.value = summaryText;
+        fb.setAttribute('aria-label', 'Result text to copy');
+        if (!document.getElementById('fallback')) status.parentNode.insertBefore(fb, status.nextSibling);
+        fb.focus(); fb.select();
         status.textContent = 'Press copy on your device.';
       };
       try {
         navigator.clipboard.writeText(summaryText).then(function () {
-          status.textContent = 'Copied.'; fb.hidden = true;
+          status.textContent = 'Copied.';
         }, fallback);
       } catch (err) { fallback(); }
     }
